@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ArrowDown, ArrowUp, Beaker, FlaskConical } from "lucide-react"
+import { ArrowDown, ArrowUp, Beaker, FlaskConical, Users } from "lucide-react"
 import { PistonSimulation } from "@/components/piston-simulation"
 import { PracticeProblem } from "@/components/practice-problem"
 
@@ -138,8 +138,39 @@ export default function Page() {
       </section>
 
       {/* Practice */}
-      <section className="mx-auto max-w-5xl px-4 pb-20">
+      <section className="mx-auto max-w-5xl px-4 pb-16">
         <PracticeProblem />
+      </section>
+
+      {/* Team */}
+      <section className="mx-auto max-w-5xl px-4 pb-20">
+        <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <div className="mb-6 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1 text-sm font-medium text-muted-foreground">
+              <Users className="size-4 text-primary" />
+              Our Team
+            </span>
+            <h2 className="mt-4 font-heading text-2xl font-semibold text-foreground">Team Members</h2>
+            <p className="mt-2 text-muted-foreground">The people behind this Boyle&apos;s Law lesson.</p>
+          </div>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {TEAM.map((name) => (
+              <li
+                key={name}
+                className="flex items-center gap-3 rounded-xl border border-border bg-secondary/30 p-4 transition-colors hover:border-primary/50"
+              >
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-sm font-semibold text-primary-foreground">
+                  {name
+                    .split(" ")
+                    .map((w) => w[0])
+                    .slice(0, 2)
+                    .join("")}
+                </span>
+                <span className="font-medium text-foreground">{name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <footer className="border-t border-border py-8">
@@ -150,6 +181,15 @@ export default function Page() {
     </main>
   )
 }
+
+const TEAM = [
+  "Gerald Ibina",
+  "Maffi Del Castillo",
+  "Kirk Douglas Romarate",
+  "Charmiller Angelo Obenita",
+  "Rogil Gacer",
+  "Regie Salvador",
+]
 
 function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
