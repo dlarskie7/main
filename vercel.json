@@ -1,6 +1,5 @@
 {
-  "framework": null,
+  "framework": "nextjs",
   "installCommand": "npm ci",
-  "buildCommand": "echo 'Static assets are already included in public/'",
-  "outputDirectory": "public"
+  "buildCommand": "npm run build"
 }
